@@ -5,9 +5,9 @@ import 'package:todolist/screens/home.dart';
 import 'blocs/bloc/bloc_exports.dart';
 
 void main() {
-  BlocOverrides.runZoned(
-    () => runApp(const MyApp()),
-  );
+  SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -15,11 +15,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     return BlocProvider(
       create: (context) => ToDoBloc(),
-      child: MaterialApp(
+      child: const MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'ToDo App',
         home: Home(),
